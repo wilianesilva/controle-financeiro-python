@@ -3,15 +3,29 @@
 transacoes = []
 
 def adicionar_receita():
-    valor = float(input("Digite o valor da receita: "))
+    try:
+        valor = float(input("Digite o valor da receita: "))
+    except ValueError:
+        print("Valor inválido! Digite apenas números.\n")
+        return
+
     descricao = input("Digite a descrição: ")
     transacoes.append({"tipo": "receita", "valor": valor, "descricao": descricao})
     print("Receita adicionada com sucesso!\n")
 
 def adicionar_despesa():
-    valor = float(input("Digite o valor da despesa: "))
+    try:
+        valor = float(input("Digite o valor da despesa: "))
+    except ValueError:
+        print("Valor inválido! Digite apenas números.\n")
+        return
+
     descricao = input("Digite a descrição: ")
-    transacoes.append({"tipo": "despesa", "valor": valor, "descricao": descricao})
+    transacoes.append({
+        "tipo": "despesa",
+        "valor": valor,
+        "descricao": descricao
+    })
     print("Despesa adicionada com sucesso!\n")
 
 def listar_transacoes():
